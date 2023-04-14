@@ -37,5 +37,6 @@
     <string name="sort_by">sortBy</string>
     <string name="task">Task</string>
     <string name="zhanna">Zhanna</string>
+    <string name="delete_item">delete_item</string>
 
 </resources>

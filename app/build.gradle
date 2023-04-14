@@ -49,7 +49,8 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:2.6.1"
 
     // Navigation
-    def nav_version = "2.3.5"
+    var nav_version = "2.5.3"
+
 
     //noinspection GradleDependency
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

@@ -11,7 +11,7 @@
         android:name="com.example.todolist.ui.addtodo.AddTodoFragment"
         android:label="AddTodoFragment" >
         <action
-            android:id="@+id/action_addTodoFragment_to_todoListFragment"
+            android:id="@+id/action_addTodoFragment_to_todoListFragment2"
             app:destination="@id/todoListFragment" />
     </fragment>
     <fragment
@@ -30,11 +30,8 @@
             android:id="@+id/action_todoListFragment_to_addTodoFragment"
             app:destination="@id/addTodoFragment" />
         <action
-            android:id="@+id/action_todoListFragment_to_editTodoFragment2"
+            android:id="@+id/action_todoListFragment_to_editTodoFragment"
             app:destination="@id/editTodoFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.todolist.ui.login.LoginFragment"
-        android:label="LoginFragment" />
+
 </navigation>
