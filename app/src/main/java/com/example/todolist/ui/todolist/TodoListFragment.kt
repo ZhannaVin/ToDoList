@@ -34,7 +34,8 @@ class TodoListFragment : Fragment () {
         todoListViewModel = ViewModelProvider(this).get(TodoListViewModel::class.java)
         rvAdapter = TodoAdapter({ todo: Todo -> handleTodoClick(todo) }, todoListViewModel)
         todoRecyclerView = binding.todoRecyclerView
-        todoRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        todoRecyclerView.layoutManager = LinearLayoutManager(context)
+
         todoRecyclerView.adapter = rvAdapter
         todoRecyclerView.setHasFixedSize(true)
         return binding.root

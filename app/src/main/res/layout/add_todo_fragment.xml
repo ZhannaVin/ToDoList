@@ -68,7 +68,7 @@
             android:hint="@string/dueDate">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_date"
+                android:id="@+id/add_Duedate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
@@ -125,7 +125,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/add_button"
+        android:id="@+id/add_task_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

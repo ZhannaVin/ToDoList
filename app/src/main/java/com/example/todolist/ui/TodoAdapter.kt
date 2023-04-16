@@ -21,7 +21,7 @@ import java.util.*
 class TodoAdapter(private val clickListener: (todo: Todo) -> Unit, private val viewModel: TodoListViewModel): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
 
-    private var dateFormat = SimpleDateFormat("EEEE, dd MMM YYYY", Locale.getDefault())
+    private var dateFormat = SimpleDateFormat("hh:mm, dd MMM YYYY", Locale.getDefault())
     private var todoList = listOf<Todo>()
     private var todoFilteredList: List<Todo> = arrayListOf()
 
@@ -41,8 +41,11 @@ class TodoAdapter(private val clickListener: (todo: Todo) -> Unit, private val v
         return dueDate?.let { Date(it) }
     }
 
+
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+
         val current = todoFilteredList[position]
         val dueDate = dateFormat.format(converter(current.dueDate))
         holder.tvTodo.text = current.todo
