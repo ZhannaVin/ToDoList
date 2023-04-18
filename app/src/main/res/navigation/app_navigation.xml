@@ -10,17 +10,14 @@
         android:id="@+id/addTodoFragment"
         android:name="com.example.todolist.ui.addtodo.AddTodoFragment"
         android:label="AddTodoFragment" >
-        <action
-            android:id="@+id/action_addTodoFragment_to_todoListFragment2"
-            app:destination="@id/todoListFragment" />
     </fragment>
     <fragment
         android:id="@+id/editTodoFragment"
         android:name="com.example.todolist.ui.edittodo.EditTodoFragment"
         android:label="EditTodoFragment" >
-        <action
-            android:id="@+id/action_editTodoFragment_to_todoListFragment"
-            app:destination="@id/todoListFragment" />
+        <argument
+            android:name="todoId"
+            app:argType="integer"/>
     </fragment>
     <fragment
         android:id="@+id/todoListFragment"

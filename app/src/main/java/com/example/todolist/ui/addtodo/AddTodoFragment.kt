@@ -11,12 +11,13 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.todolist.R
 import com.example.todolist.databinding.AddTodoFragmentBinding
-import com.example.todolist.databinding.TodoListFragmentBinding
 import com.example.todolist.receiver.AlarmReceiver
 import com.example.todolist.room_todo.Todo
+import com.example.todolist.ui.todolist.TodoListFragmentDirections
 import com.example.todolist.ui.todolist.TodoListViewModel
 
 import java.text.SimpleDateFormat
@@ -29,6 +30,11 @@ class AddTodoFragment : Fragment() {
     private var dateAndTimeFormat = SimpleDateFormat("hh:mm, dd MMM YYYY", Locale.getDefault())
     private var todo: Todo? = null
     private var initialValue = ContentValues()
+
+    override fun onResume() {
+        super.onResume()
+        activity?.actionBar?.title = "Add task"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,14 +82,23 @@ class AddTodoFragment : Fragment() {
                 else context?.let { it1 -> alarmReceiver.setReminder(it1, due_date, todoTitle) }
 
                 addTodoViewModel.insertTodo(add)
-            } else Toast.makeText(context, "Please Enter Data Correctly!", Toast.LENGTH_SHORT)
+
+                findNavController().navigate(R.id.todoListFragment)
+
+
+        } else Toast.makeText(context, "Please Enter Data Correctly!", Toast.LENGTH_SHORT)
                 .show()
+
+
         }
         binding.btnDate.setOnClickListener {
             pickDateTime()
         }
 
     }
+
+
+
 
     private fun pickDateTime() {
         val dueDateTime = Calendar.getInstance()

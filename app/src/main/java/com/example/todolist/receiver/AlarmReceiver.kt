@@ -84,6 +84,7 @@ class AlarmReceiver: BroadcastReceiver() {
                     .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
 
             } else {
+
                 builder = NotificationCompat.Builder(context, channeId)
                     .setChannelId(channeId)
                     .setContentTitle(title)

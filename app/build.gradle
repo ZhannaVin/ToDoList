@@ -40,6 +40,12 @@ android {
 
 dependencies {
     //added
+
+
+    //design
+    implementation 'com.google.android.material:material:1.8.0'
+
+
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
 
@@ -51,10 +57,9 @@ dependencies {
     // Navigation
     var nav_version = "2.5.3"
 
-
-    //noinspection GradleDependency
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
 
     // Room
     implementation "androidx.room:room-runtime:2.5.1"

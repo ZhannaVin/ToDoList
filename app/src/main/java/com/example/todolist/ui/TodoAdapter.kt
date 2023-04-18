@@ -18,7 +18,7 @@ import java.util.*
 
 
 
-class TodoAdapter(private val clickListener: (todo: Todo) -> Unit, private val viewModel: TodoListViewModel): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
+class TodoAdapter(private val deleteClickListener: (todo: Todo) -> Unit, private val clickListener: (todo: Todo) -> Unit, private val viewModel: TodoListViewModel): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
 
     private var dateFormat = SimpleDateFormat("hh:mm, dd MMM YYYY", Locale.getDefault())
@@ -53,6 +53,9 @@ class TodoAdapter(private val clickListener: (todo: Todo) -> Unit, private val v
         holder.tvDueDate.text = dueDate
         holder.itemView.setOnClickListener(){
             clickListener(todoFilteredList[position])
+        }
+        holder.deleteIcon.setOnClickListener(){
+            deleteClickListener(todoFilteredList[position])
         }
     }
 
@@ -102,11 +105,7 @@ class TodoAdapter(private val clickListener: (todo: Todo) -> Unit, private val v
         val tvDueDate: TextView = itemView.findViewById(R.id.dueDate_text_view)
         val deleteIcon: ImageView = itemView.findViewById(R.id.delete_icon)
 
-        fun bind(todo: Todo){
-            deleteIcon.setOnClickListener{
-                viewModel.deleteTodo(todo)
-            }
-        }
+
 
     }
 }

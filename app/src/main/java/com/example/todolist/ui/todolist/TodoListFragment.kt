@@ -3,19 +3,22 @@ package com.example.todolist.ui.todolist
 import androidx.fragment.app.Fragment
 import android.app.SearchManager
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.databinding.TodoListFragmentBinding
+
+
 import com.example.todolist.room_todo.Todo
 import com.example.todolist.ui.TodoAdapter
+
 
 
 class TodoListFragment : Fragment () {
@@ -32,26 +35,36 @@ class TodoListFragment : Fragment () {
     ): View? {
         binding = TodoListFragmentBinding.inflate(inflater, container, false)
         todoListViewModel = ViewModelProvider(this).get(TodoListViewModel::class.java)
-        rvAdapter = TodoAdapter({ todo: Todo -> handleTodoClick(todo) }, todoListViewModel)
+        rvAdapter = TodoAdapter({todo: Todo -> handleDeleteClick(todo)}, { todo: Todo -> handleTodoClick(todo) }, todoListViewModel)
         todoRecyclerView = binding.todoRecyclerView
         todoRecyclerView.layoutManager = LinearLayoutManager(context)
 
         todoRecyclerView.adapter = rvAdapter
         todoRecyclerView.setHasFixedSize(true)
         return binding.root
+    }
 
+    private fun handleDeleteClick(todo: Todo) {
+        todoListViewModel.deleteTodo(todo)
+    }
 
-
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
     }
 
 
     private fun handleTodoClick(todo: Todo) {
-        val action = TodoListFragmentDirections.actionTodoListFragmentToEditTodoFragment()
-        val bundle = Bundle().apply {
-            todo.id?.let { putInt("todoID", it) }
+        val navController = requireActivity().findNavController(R.id.fragment_container)
+        val action = todo.id?.let {
+            TodoListFragmentDirections.actionTodoListFragmentToEditTodoFragment(
+                it
+            )
         }
-    }
+        action?.let { findNavController().navigate(it) }
+        }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main, menu)

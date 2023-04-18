@@ -30,7 +30,7 @@ class TodoRepository(application: Application) {
     fun getSortedByDueDate():LiveData<List<Todo>>?{
         return sortDueDate
     }
-    fun getSingleTodo(id: Int): Todo{
+    suspend fun getSingleTodo(id: Int): Todo{
         return todoDao.loadSingle(id)
     }
     suspend fun insert(todo: Todo)  {
