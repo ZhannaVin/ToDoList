@@ -1,5 +1,6 @@
 # ToDoList
 A Simple Task Scheduler application 
+
 Kotlin
 MVVM
 Retrofit
