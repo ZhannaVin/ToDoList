@@ -1,12 +1,13 @@
 # ToDoList
-A Simple Task Scheduler application 
+A Simple Task Scheduler application with notifications
 
 KOTLIN,
 MVVM,
 LIVEDATA,
 JETPACK NAVIGATION,
 CLEAN ARCHITECTURE,
-ROOM DATABASE
+ROOM DATABASE,
+BROADCAST RECEIVER
 
 ![image](https://user-images.githubusercontent.com/99501694/234165432-9896a164-165a-461d-a3ea-e0b00431bed5.png)
 ![image](https://user-images.githubusercontent.com/99501694/234165449-6180aa2b-e8e0-46b3-84d4-a7af67ffae38.png)
