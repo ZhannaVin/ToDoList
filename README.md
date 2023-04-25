@@ -2,6 +2,7 @@
 A Simple Task Scheduler application with notifications
 
 KOTLIN,
+COROUTINES,
 MVVM,
 LIVEDATA,
 JETPACK NAVIGATION,
